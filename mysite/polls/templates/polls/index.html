@@ -1,10 +1,20 @@
 {% load static %}
-
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+<h1>Which image is real?</h1>
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+<!--        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>-->
+<!--        <li><img src=question.question.image_one></li>-->
+        <div>
+            <div>
+                <img src={{question.image_one}} />
+                <p><a href="{% url 'polls:detail' question.id %}">vote</a></p>
+            </div>
+            <div>
+                <img src={{question.image_two}} />
+            </div>
+        </div>
     {% endfor %}
     </ul>
 {% else %}

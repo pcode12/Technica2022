@@ -1,9 +1,21 @@
-<h1>{{ question.question_text }}</h1>
+{% load static %}
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
+<h1>Results!</h1>
+<div>
+            <div>
+                <img src={{question.image_one}} />
+                <p>{{question.ident_one}}</p>
+            </div>
+            <div>
+                <img src={{question.image_two}} />
+                <p>{{question.ident_two}}</p>
+            </div>
+</div>
 <ul>
 {% for choice in question.choice_set.all %}
     <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
 {% endfor %}
 </ul>
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+<a href="{% url 'polls:index' %}">Return Home?</a>
